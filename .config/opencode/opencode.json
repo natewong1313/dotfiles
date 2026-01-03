@@ -1,0 +1,6 @@
+{
+  "plugin": [
+    "@howaboua/pickle-thinker"
+  ],
+  "$schema": "https://opencode.ai/config.json"
+}

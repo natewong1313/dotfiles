@@ -1,0 +1,11 @@
+[general]
+import = [
+    "~/.config/alacritty/themes/themes/iris.toml"
+]
+
+[font]
+normal = { family = "ZedMono Nerd Font", style = "Regular" }
+
+[window]
+decorations = "none"
+opacity = 0.95

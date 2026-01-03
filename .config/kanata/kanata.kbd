@@ -1,0 +1,25 @@
+(defcfg
+	process-unmapped-keys yes
+	log-layer-changes no
+)
+
+(defsrc
+	caps
+  lctl
+)
+
+(deflayer default
+	@cap-remap
+  @ctrl-remap
+)
+
+(defvar
+	tap-time 200
+	hold-time 250
+)
+
+(defalias
+	cap-remap (tap-hold-press $tap-time $hold-time esc rctl)
+  ctrl-remap (tap-hold-press $tap-time $hold-time esc lctl)
+
+)
