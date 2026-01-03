@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo pacman -S git rust go fish stow brave-browser gh 1password
+sudo pacman -S git go fish stow brave-browser gh 1password
 
 mkdir deps && cd deps
 sudo pacman -S --needed git base-devel
