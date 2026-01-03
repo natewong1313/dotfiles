@@ -1,42 +1,26 @@
 #!/bin/bash
-function installDeps() {
-    sudo pacman -S git rust go fish
 
-    mkdir deps && cd deps
-    sudo pacman -S --needed git base-devel
-    git clone https://aur.archlinux.org/yay.git
-    cd yay
-    makepkg -si
-    cd ..
+sudo pacman -S git rust go fish stow brave-browser gh 1password
 
-    curl -fsSL https://bun.com/install | bash
+mkdir deps && cd deps
+sudo pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+cd ..
 
-    cargo install kanata
-}
+curl -fsSL https://bun.com/install | bash
 
-function setupKanata() {
-  # sudo groupdel uinput 2>/dev/null
-  # sudo groupadd --system uinput
-  #
-  # sudo usermod -aG input $USER
-  # sudo usermod -aG uinput $USER
-  #
-  # sudo tee /etc/udev/rules.d/99-input.rules > /dev/null <<EOF
-  # KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"
-  # EOF
-  #
-  # sudo udevadm control --reload-rules && sudo udevadm trigger
-}
+mkdir -p ~/.local/share/fonts
+cd /tmp
+curl -fLo "ZedMono.zip" "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/ZedMono.zip"
+unzip -o "ZedMono.zip" -d ~/.local/share/fonts/
+rm "ZedMono.zip"
+fc-cache -f -v
 
-function installZedMonoFont() {
-  mkdir -p ~/.local/share/fonts
-  cd /tmp
-  curl -fLo "ZedMono.zip" "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/ZedMono.zip"
-  unzip -o "ZedMono.zip" -d ~/.local/share/fonts/
-  rm "ZedMono.zip"
-  fc-cache -f -v
-}
+chsh -s "$(command -v fish)"
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+nvm install latest
 
-function setupFish() {
-  chsh -s "$(command -v fish)"
-}
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+cargo install kanata
