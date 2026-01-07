@@ -9,7 +9,6 @@ printf 'KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uin
 
 sudo udevadm control --reload-rules && sudo udevadm trigger
 
-newgrp uinput -c kanata
 
 sudo mkdir -p ~/.config/systemd/user
 
