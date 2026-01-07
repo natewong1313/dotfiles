@@ -16,7 +16,16 @@
       "environment": {
         "MORPH_API_KEY": "{env:MORPH_API_KEY}",
         "ENABLED_TOOLS": "edit_file,warpgrep_codebase_search"
-      }
+      },
+      "enabled": true
+    },
+    "playwriter": {
+      "type": "local",
+      "command": ["bunx", "-y", "playwriter@latest"],
+      "environment": {
+        "PLAYWRITER_AUTO_ENABLE": "1"
+      },
+      "enabled": true
     }
   }
 }
