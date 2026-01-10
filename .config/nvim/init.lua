@@ -126,6 +126,15 @@ vim.keymap.set('n', '<leader>ba', function()
     apply = true,
   }
 end, { desc = '[B]iome [A]ctions' })
+vim.keymap.set('n', '<leader>oa', function()
+  vim.lsp.buf.code_action {
+    context = {
+      only = { 'source.fixAll.oxc' },
+      diagnostics = {},
+    },
+    apply = true,
+  }
+end, { desc = '[O]xlint [A]ctions' })
 vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', {
     desc = "Toggle Spectre"
 })
@@ -330,7 +339,7 @@ require('lazy').setup({
       -- lsps
       require('mason-lspconfig').setup {
         automatic_enable = true,
-        ensure_installed = { 'ruff', 'basedpyright', 'vtsls', 'gopls', 'rust_analyzer', 'tailwindcss', 'biome' },
+        ensure_installed = { 'ruff', 'basedpyright', 'vtsls', 'gopls', 'rust_analyzer', 'tailwindcss', 'biome', 'oxlint' },
       }
       vim.lsp.enable {
         'ruff',
